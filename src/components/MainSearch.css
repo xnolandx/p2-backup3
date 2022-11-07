@@ -1,0 +1,79 @@
+.characters-container {
+        
+        
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+
+}
+
+.character-list{
+display: flex;
+flex-wrap: wrap;
+/* grid-template-columns: auto;
+grid-auto-flow: column;
+grid-template-rows: auto; */
+justify-content: flex-start;
+row-gap: 20px;
+column-gap: 50px;
+gap: 5px;
+margin: 10px;
+text-decoration-line: none;
+
+}
+    
+
+
+
+.card {
+
+text-align: center;
+padding: 10px;
+width: 300px;
+border-radius: 5px;
+/* padding: 1em; */
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+font-size: 14px;
+text-transform: capitalize;
+text-decoration-line: none;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+color: #555;
+}
+
+.Link {
+text-decoration: none;
+}
+
+.thumbnail {
+height: 200px;
+
+width: auto;
+align-items: center;
+border-style: solid;
+box-shadow:rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; ;
+}
+
+.card:hover {
+transform: scale(1.05);
+background-color: aliceblue;
+color: black;
+}
+
+.text-search-bar {
+margin-top: 20px;
+width: 300px;
+height: 40px;
+font-size: 20px;
+padding-left: 10px;
+}
+
+.thumbnail{
+scale: 5px;
+width: 300px;
+height: 300px;
+object-fit: contain;
+}
+
+.link-text{
+    text-decoration-line: none ;
+}
