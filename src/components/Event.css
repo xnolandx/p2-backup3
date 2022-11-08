@@ -10,6 +10,8 @@
     
 }
 
+
+
 .event-info-container{
 
 }
@@ -44,9 +46,54 @@
 .event-timeline{
     background-color: #666;
     width: 20rem;
-
+    border:3rem;
+    border-color: black;
+    border-radius: 5px;
 }
 
+
+.event-characters-container{
+    background-color: #666;
+    width: 20rem;
+}
+
+
+
+
+.event-link-text{
+    background-color: #666;
+    width: 20rem;
+    color: azure;
+    text-decoration-line: none;
+    
+    border-color: black;
+    border-radius: 5px;
+}
+
+.event-card{
+text-align: center;
+padding: 8px;
+margin: 5px;
+width: 300px;
+
+border: .25rem;
+border-radius: 5px;
+border-color: black;
+border-style: solid;
+/* padding: 1em; */
+box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+font-size: 14px;
+text-transform: capitalize;
+text-decoration-line: none;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+color: rgb(255, 255, 255);
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+    background-color: aliceblue;
+    color: black;
+    }
 
 
 

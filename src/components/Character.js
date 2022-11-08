@@ -2,6 +2,12 @@ import { React, useState, useContext, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import EventContext from "./EventContext"
 import './Character.css'
+import BarChart from './BarChart'
+// import { Data } from './Data'
+
+
+
+  
 
 function Character({character}) {
 
@@ -9,7 +15,38 @@ function Character({character}) {
   const[eventData, setEventData] =useState([])
   const[imageURL, setImageURL] =useState('');
   const {setEventCon} = useContext(EventContext)
+  const [powerData, setPowerData] = useState({
+    labels: ['Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat'],
+    datasets: [{
+      label: "Power Level",
+      data: [
+        character.powerstats.intelligence, 
+        character.powerstats.strength, 
+        character.powerstats.speed,
+        character.powerstats.durability,
+        character.powerstats.power,
+        character.powerstats.combat
+      ], 
+      backgroundColor: [
+        'rgba(127, 175, 101, 0.2)'
+      ]
+    }]
+  })
+  
 
+  
+
+
+
+
+
+
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
 
   useEffect(() => {
     fetch(`https://gateway.marvel.com/v1/public/characters?name=${character.name}&ts=1&apikey=7e83ac0b463a8a08dd9a9d134ac0130a&hash=6576dc02e0ffad166dad1d8a3e0febfc`)
@@ -25,11 +62,12 @@ function Character({character}) {
     .catch(err => console.log(err))
   }, [eventURL])
   
+
   return (
     <>
      <div className="character-container">
       
-          <h1 className='title'>{character.name} - ({character.biography['full-name']}) </h1>
+          <h1 className='title'>{character.name}  </h1>
           <h2 className='alignment'>Alignment: {character.biography.alignment} </h2>
           <div className='image'>
             <img className='image' src={character.image.url} alt=''/>
@@ -37,47 +75,51 @@ function Character({character}) {
           <h2 className='alignment'>Identification Number: {character.id} </h2>
 
       <div className='character-info-container'>
-        <ul  className='character-bio'>
+        <ul key='a' className='character-bio'>
           Biographical Data:
-              <li>Full Name: {character.biography['full-name']}</li>
-              <li>Base(s) of Operation: {character.work.base}</li>
-              <li>Occupation: {character.work.occupation}</li>
-              <li>Place of Birth: {character.biography['place-of-birth']}</li>
-              <li>Alter Egos: {character.biography['alter-egos']}</li>
-              <li>Aliases:             
+              <li key='a'>Full Name: {character.biography['full-name']}</li>
+              <li key='b'>Base(s) of Operation: {character.work.base}</li>
+              <li key='c'>Occupation: {character.work.occupation}</li>
+              <li key='d'>Place of Birth: {character.biography['place-of-birth']}</li>
+              <li key='e'>Alter Egos: {character.biography['alter-egos']}</li>
+              <li key='f'>Aliases:             
                 {character.biography.aliases.map((alias, index) => (
                 <> /{alias}/</>
               ))}  
               </li>
           </ul>
 
-          <ul className='character-appearance'>
+          <ul key='b' className='character-appearance'>
             Appearance: 
-            <li>Species: {character.appearance.race} {character.appearance.gender} </li>
-            <li>Height: {character.appearance.height[0]} </li>
-            <li>Weight: {character.appearance.weight[0]} </li>
-            <li>Eye Color: {character.appearance['eye-color']}</li>
-            <li>Hair Color: {character.appearance['hair-color']}</li>
+            <li key='g'>Species: {character.appearance.race} {character.appearance.gender} </li>
+            <li key='h'>Height: {character.appearance.height[0]} </li>
+            <li key='i'>Weight: {character.appearance.weight[0]} </li>
+            <li key='j'>Eye Color: {character.appearance['eye-color']}</li>
+            <li key='k'>Hair Color: {character.appearance['hair-color']}</li>
           </ul>
 
-        <ul className='character-stats'>
+        <ul key='c'className='character-stats'>
           Stats: 
-            <li>Intelligence: {character.powerstats.intelligence}</li>
-            <li>Strength: {character.powerstats.strength}</li>
-            <li>Speed: {character.powerstats.speed}</li>
-            <li>Durability: {character.powerstats.durability}</li>
-            <li>Power: {character.powerstats.power}</li>
-            <li>Combat: {character.powerstats.combat}</li>
+            <li key='l'>Intelligence: {character.powerstats.intelligence}</li>
+            <li key='m'>Strength: {character.powerstats.strength}</li>
+            <li key='n'>Speed: {character.powerstats.speed}</li>
+            <li key='o'>Durability: {character.powerstats.durability}</li>
+            <li key='p'>Power: {character.powerstats.power}</li>
+            <li key='q'>Combat: {character.powerstats.combat}</li>
         </ul>
+
+        <div>
+          <BarChart chartData={powerData} />
+        </div>
 
         <div className='character-stats-chart'>
         Characters stats charts/graphs would go here
         </div>
 
-        <ul className='character-connections'>
+        <ul key='d' className='character-connections'>
           Connections:
-          <li> Group-Affiliation: {character.connections['group-affiliation']} </li>
-          <li> Relatives: {character.connections.relatives} </li>
+          <li key='r'> Group-Affiliation: {character.connections['group-affiliation']} </li>
+          <li key='s'> Relatives: {character.connections.relatives} </li>
         </ul>
 
         <div className='events-container'> 
@@ -107,6 +149,7 @@ function Character({character}) {
     </div>
     </>
   )
+
 }
 
 export default Character
