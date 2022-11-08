@@ -10,6 +10,7 @@ function Character({character}) {
   const[imageURL, setImageURL] =useState('');
   const {setEventCon} = useContext(EventContext)
 
+
   useEffect(() => {
     fetch(`https://gateway.marvel.com/v1/public/characters?name=${character.name}&ts=1&apikey=7e83ac0b463a8a08dd9a9d134ac0130a&hash=6576dc02e0ffad166dad1d8a3e0febfc`)
     .then(res => res.json())
@@ -23,7 +24,7 @@ function Character({character}) {
     .then(data => setEventData(data.data.results))
     .catch(err => console.log(err))
   }, [eventURL])
-
+  
   return (
     <>
      <div className="character-container">

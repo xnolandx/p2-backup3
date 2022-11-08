@@ -4,28 +4,32 @@ import './Event.css'
 import CharacterContext from './CharacterContext'
 
 
-function Event(event) {
+function Event(event, character) {
   let eventCharactersURL = event.event.characters.collectionURI
   const[eventCharacters, setEventCharacters] =useState([]);
-  const[eventCharacter, setEventCharacter] =useState('');
-  const[characterData, setCharacterData] =useState()
-  const [characterSearchTerm, setCharacterSearchTerm] = useState('')
+  const[eventCharacterFetchStatus, setEventCharacterFetchStatus] =useState('')
+  const[EventCharacter, setEventCharacter] =useState('');
   const {setCharacterCon} = useContext(CharacterContext)
 
+  // 100 characters associated with the given event come from here on mount
   useEffect(() => {
     fetch(`${eventCharactersURL}?limit=100&ts=1&apikey=7e83ac0b463a8a08dd9a9d134ac0130a&hash=6576dc02e0ffad166dad1d8a3e0febfc`)
     .then(res => res.json())
     .then(data => setEventCharacters(data.data.results))
   }, [])
 
-  function eventCharacterFetch() {
-    fetch(`http://0.0.0.0:8080/https://superheroapi.com/api/101087216157325/search/${characterSearchTerm}`)
+  function eventCharacterFetch(eventCharacterName) {
+    fetch(`https://www.superheroapi.com/api.php/101087216157325/search/${eventCharacterName}`)
     .then(res => res.json())
-    .then(character => setCharacterData(character.results))
-    .catch(err => console.log(err))
+    .then(data => setEventCharacterFetchStatus(data.response))
    }
+   
+  // useEffect(() => {
+  //   eventCharacterFetch(EventCharacter)
+  // }, [EventCharacter])
 
-console.log(eventCharacters)
+
+
 
   return (
     <div className='event-container'>
@@ -57,27 +61,18 @@ console.log(eventCharacters)
 
         <div className='assosciated-characters-container'> 
         Associated Characters:
-            <ul className='event-assosciated-characters'>{
-                (eventCharacters.length === 0 ? <div>Loading...</div> : 
-                    eventCharacters.map((character, index) => (
+            <div className='event-assosciated-characters'>{
+              (eventCharacters.length === 0 ? <div>Loading...</div> : 
+              eventCharacters.map(eventCharacter => {
+                
+                
+              })
 
-                      // <Link to={`/characters/${character.id}`} key={character.id} onClick={() => {
-                      //   setCharacterSearchTerm(character)
-                      
-                      // }} className='link-text'>
-                        
-                      //   <div className='card' key={character.id}>
-                      //       <img src={character.image.url} alt='' className='thumbnail'/>
-                      //       <div className="character-text">
-                      //       <h2>{character.name}</h2> *** 
-                      //       </div>
-                      //   </div>
-                      // </Link> 
-                      <li key={character.id}>{character.name}</li>
-                    )))
-            }
+
               
-            </ul>
+            )}
+            
+            </div>
         </div>
       </div>
     </div>
@@ -86,17 +81,10 @@ console.log(eventCharacters)
 
 export default Event
 
-
-//gutted link from within map:
+// eventCharacterFetchStatus === 'success' ?
+// console.log('yup') :
+// console.log('nope')
 
 {/* <Link to={`/characters/${character.id}`} key={character.id} onClick={() => {
-  setCharacterCon(character)
-}} className='link-text'>
-  
-  <div className='card' key={character.id}>
-      <img src={character.image.url} alt='' className='thumbnail'/>
-      <div className="character-text">
-      <h2>{character.name}</h2> *** 
-      </div>
-  </div>
-</Link>  */}
+setCharacterCon(EventCharacter)
+}}> </Link>  */}

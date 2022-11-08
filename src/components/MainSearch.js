@@ -14,11 +14,13 @@ const MainSearch =() => {
 
 
     function characterFetch() {
-        fetch(`http://0.0.0.0:8080/https://superheroapi.com/api/101087216157325/search/${characterSearchTerm}`)
+        fetch(`https://www.superheroapi.com/api.php/101087216157325/search/${characterSearchTerm}`)
+        // fetch(`http://0.0.0.0:8080/https://superheroapi.com/api/101087216157325/search/${characterSearchTerm}`)
         .then(res => res.json())
         .then(character => setCharacterData(character.results))
         .catch(err => console.log(err))
        }
+
      
 return ( 
 

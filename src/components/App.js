@@ -22,18 +22,21 @@ function App() {
 
   return (
     <>
+    <Router>
      <Header/>
      <CharacterContext.Provider value={value}>
       <EventContext.Provider value={value2}>
-        <Router>
+        
           <Routes>
             <Route path="/" element={<MainSearch character={characterCon}/>}/>
             <Route path="/characters/:characterid" element={<Character character={characterCon}/>}/>
             <Route path="/events/:eventid" element={<Event event={eventCon}/>}></Route>
+            {/* <Route path="/characters/:characterid" element={<Character character={characterCon}/>}/> */}
           </Routes>
-        </Router>
+        
         </EventContext.Provider>
       </CharacterContext.Provider>
+      </Router>
      </>
   );
 }
