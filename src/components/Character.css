@@ -93,3 +93,15 @@ width: 20rem;
     text-decoration-line: none;
     
 }
+
+.chart-container{
+    border-style: solid;
+    border-color: black;
+    border-width: .10rem;
+    width: 40rem;
+    background-color: #666;  
+    padding: 1rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(255, 255, 255);
+}
+

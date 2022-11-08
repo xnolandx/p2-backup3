@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import EventContext from "./EventContext"
 import './Character.css'
 import BarChart from './BarChart'
-// import { Data } from './Data'
+
 
 
 
@@ -13,8 +13,8 @@ function Character({character}) {
 
   const[eventURL, setEventURL] = useState('');
   const[eventData, setEventData] =useState([])
-  const[imageURL, setImageURL] =useState('');
   const {setEventCon} = useContext(EventContext)
+
   const [powerData, setPowerData] = useState({
     labels: ['Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat'],
     datasets: [{
@@ -28,10 +28,36 @@ function Character({character}) {
         character.powerstats.combat
       ], 
       backgroundColor: [
-        'rgba(127, 175, 101, 0.2)'
-      ]
+        'rgba(10,175,101, 0.3)'
+      ], 
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(245, 66, 66)',
+      borderWidth: 1,
+      borderColor: 'grey', 
+      rAxisID: 'r',
+    }, 
+    {
+      label: "Power Level",
+      data: [
+        character.powerstats.intelligence, 
+        character.powerstats.strength, 
+        character.powerstats.speed,
+        character.powerstats.durability,
+        character.powerstats.power,
+        character.powerstats.combat
+      ], 
+      backgroundColor: [
+        'rgba(10,175,101, 0.3)'
+      ], 
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(245, 66, 66)',
+      borderWidth: 1,
+      borderColor: 'grey', 
+      rAxisID: 'r',
     }]
+    
   })
+
   
 
   
@@ -108,13 +134,15 @@ function Character({character}) {
             <li key='q'>Combat: {character.powerstats.combat}</li>
         </ul>
 
-        <div>
-          <BarChart chartData={powerData} />
+        <div className='chart-container'>
+          <BarChart chartData={powerData}  />
         </div>
 
-        <div className='character-stats-chart'>
-        Characters stats charts/graphs would go here
-        </div>
+
+
+
+
+
 
         <ul key='d' className='character-connections'>
           Connections:
