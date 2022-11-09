@@ -10,6 +10,9 @@ const MainSearch =() => {
     const[characterData, setCharacterData] =useState()
     const [characterSearchTerm, setCharacterSearchTerm] = useState('')
     const {setCharacterCon} = useContext(CharacterContext)
+    
+
+
 
 
 
@@ -21,7 +24,6 @@ const MainSearch =() => {
         .catch(err => console.log(err))
        }
 
-     
 return ( 
 
     <>
@@ -67,20 +69,3 @@ return (
 )}
 
 export default MainSearch;
-
-
-
-
-
-
-{/* <Link to={`/characters/${characterData.id}`} key={characterData.id} onClick={() => {
-    setCharacterCon(characterData)
-}} className='link-text'>
-    
-    <div className='card' key={characterData.id}>
-        <img src={characterData.image.url} alt='' className='thumbnail'/>
-        <div className="character-text">
-        <h2>{characterData.name}</h2> *** 
-        </div>
-    </div>
-</Link> */}

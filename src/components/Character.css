@@ -11,7 +11,7 @@
 }
 
 .character-info-container{
-
+    text-decoration-line: none;
 }
 
 .title {
@@ -100,8 +100,37 @@ width: 20rem;
     border-width: .10rem;
     width: 40rem;
     background-color: #666;  
-    padding: 1rem;
+    /* padding: 1rem; */
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: rgb(255, 255, 255);
 }
+
+.hiddenButton{
+    display: none;
+}
+
+.hiddenButton2{
+    visibility: hidden; 
+}
+
+.compare-container{
+    text-decoration-line: none;
+    
+}
+
+.hero-results-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.result-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 

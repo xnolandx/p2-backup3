@@ -9,10 +9,15 @@ function BarChart({chartData}, ) {
     <Radar 
     data={chartData} 
     options={ {
+      
       plugins: {
         legend:{
+          reverse: true,
+          position: 'top',
+          align: 'start',
           labels: {
-            color: 'white'
+            color: 'white',
+            
           }
         }
         
@@ -31,16 +36,20 @@ function BarChart({chartData}, ) {
               padding: 6
             },
             ticks: {
-              // color: 'white',
-              // backdropColor: 'rgba(10,175,101, 1)'
+              color: 'white',
+              backdropColor: 'rgba(10,175,101, 0)',
               font: 'Times New Roman',
-              // stepSize: 10
-            }, 
-            myScale: {
-              scaleStartValue: 0,
-            }
+              stepSize: 20
+            },
+            suggestedMin: 0,
+            suggestedMax: 100
+
           }
-      },     
+      },
+      layout: {
+        padding: 5,
+        // autoPadding: true
+      }     
       
     }}
     />
